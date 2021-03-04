@@ -227,7 +227,7 @@ export default class EasyAxios {
                 || (error.config.times && error.config.times >= this.maxReconnectionTimes)
                 ) {
 
-                    let message = '连接到服务器失败'
+                    let message = '连接失败'
 
                     if (error.response) { // 服务端响应
                         const { status } = error.response
