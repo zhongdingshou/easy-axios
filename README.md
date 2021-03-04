@@ -138,8 +138,8 @@ validateResultStatus: (status) => {
 例如： 
 ```
 // 管理员相关接口
-const login        = (param)     => easyAxiosInstance.POST('/login', param)
-const adminList    = (param)     => easyAxiosInstance.GET('/admin', param)
+const login     = (param) => easyAxiosInstance.POST('/login', param)
+const adminList = (param) => easyAxiosInstance.GET('/admin', param)
 
 export { 
     login,
@@ -162,7 +162,7 @@ export {
 
 `config` 为单独接口的配置对象，可以对某个接口设置 `headers` ， `timeout` ， `baseURL` 等
 
-`config` 的 `easyAxiosConfig` 设置 `disableHooks` ， `disableTips` ， `disableCache` ，`disableCancelDuplicate` ， `requestKey`
+`config` 的 `easyAxiosConfig` 属性可以对某个接口设置 `disableHooks` ， `disableTips` ， `disableCache` ，`disableCancelDuplicate` ， `requestKey`
 
 ```
 // 禁用全部 hooks
@@ -180,4 +180,10 @@ easyAxiosInstance.GET(url, param, { easyAxiosConfig: { disableCancelDuplicate: t
 
 // 为某个请求设置 key 标识，用于查找该请求是否正在发送
 easyAxiosInstance.GET(url, param, { easyAxiosConfig: { requestKey: 'string' } })
+```
+
+清除所有 PendingRequest
+```
+// 路由切换时可以取消之前所有正在发送的请求，在路由跳转前调用
+easyAxiosInstance.clearPendingRequest()
 ```
