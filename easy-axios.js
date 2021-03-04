@@ -23,10 +23,7 @@ export default class EasyAxios {
     constructor(options = {}, axiosConfig = {}) {
         // 验证 options 属性是否合法
         const result = validator(options, claim)
-        if (result.illegal) {
-            console.error(result.errorMsg)
-            return new Error(result.errorMsg)
-        }
+        if (result.illegal) throw new Error(result.errorMsg)
 
         // 请求数
         this.requestCount = 0 
