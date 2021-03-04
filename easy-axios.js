@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 import merge from 'lodash/merge'
 import { validator } from './validator/validator.js'
 import { claim } from './validator/claim.js'
@@ -17,7 +17,7 @@ const defaultAxiosConfig = {
 }
 
 // 如果需要兼容旧的逻辑
-export const primevalAxios = axios;
+export const primevalAxios = axios
 
 export default class EasyAxios {
     constructor(options = {}, axiosConfig = {}) {
@@ -83,7 +83,7 @@ export default class EasyAxios {
 
     // 创建
     createAxios() {
-        this.easyAxios = axios.create(this.config);
+        this.easyAxios = axios.create(this.config)
     }
 
     // 拦截器
@@ -103,7 +103,7 @@ export default class EasyAxios {
                 // 是否开启请求缓存
                 if (this.isOpenRequestCache && !disableCache) {
                     // 获取缓存
-                    const cacheData = EasyAxios.getDataCache(config.url, config[['get','delete'].includes(config.method.toLocaleLowerCase()) ? 'params' : 'data'])
+                    const cacheData = EasyAxios.getDataCache(config.method, config.url, config[['get','delete'].includes(config.method.toLocaleLowerCase()) ? 'params' : 'data'])
                     if (cacheData) { // 是否存在
                         return Promise.reject({isOpenRequestCache: true, data: cacheData})
                     }
@@ -165,9 +165,9 @@ export default class EasyAxios {
 
                 // 返回响应对象
                 return new Promise((resolve, reject) => {
-                    if (!response || !response.data) resolve(null);
+                    if (!response || !response.data) resolve(null)
 
-                    const resultData = response.data;
+                    const resultData = response.data
                     const status = this.getStatusFormResult(resultData) || response.status
 
                     if (!this.validateResultStatus(status)) {
@@ -189,7 +189,7 @@ export default class EasyAxios {
                     // 设置缓存相关
                     this.isOpenRequestCache 
                     && !disableCache 
-                    && EasyAxios.setDataCache(response.config.url, response.config[['get','delete'].includes(response.config.method.toLocaleLowerCase()) ? 'params' : 'data'], data)
+                    && EasyAxios.setDataCache(response.config.method, response.config.url, response.config[['get','delete'].includes(response.config.method.toLocaleLowerCase()) ? 'params' : 'data'], data)
           
                     resolve(data)
                 })
@@ -350,17 +350,17 @@ export default class EasyAxios {
     }
 
     // 根据url和params对象获取缓存
-    static getDataCache(url, params) {
+    static getDataCache(method, url, params) {
         // 生成 key
-        const key = `${url}:${JSON.stringify(params)}`
+        const key = `${method}-${url}:${JSON.stringify(params)}`
         // 获得请求对象
         return OperationCache.get(key)
     }
 
     // 根据url和params对象设置缓存
-    static setDataCache(url, params, data) {
+    static setDataCache(method, url, params, data) {
         // 生成 key
-        const key = `${url}:${JSON.stringify(params)}`
+        const key = `${method}-${url}:${JSON.stringify(params)}`
         // 设置
         OperationCache.set(key, data, this.cacheEffectiveTime)
     }
