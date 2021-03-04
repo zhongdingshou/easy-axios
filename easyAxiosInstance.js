@@ -55,7 +55,7 @@ export default new EasyAxios({
     // 提示信息的处理
     tipsFunction: (message) => {
         // 可以添加提示框
-        console.log('提示信息的处理')
+        console.log('提示信息的处理：', message)
     },
     
     // 添加加载动画

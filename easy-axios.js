@@ -238,7 +238,11 @@ export default class EasyAxios {
                         
                         toRawType.isFunction(statusHandler) && statusHandler()
 
-                    } else message = error.message
+                    } else if (error.request) {
+                        message = error.message
+                    } else {
+                        message = error.message
+                    }
                    
                     // 调用提示方法
                     (this.isOpenTips && !disableTips) && this.tipsFunction(message)
