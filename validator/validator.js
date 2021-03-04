@@ -3,7 +3,7 @@ import { toRawType } from '../utils/utils.js'
 export const validator =  (options, claim) => {
     if(toRawType(options) !== 'object') return {
         illegal: true,
-        errorMsg: '参数 options 的数据类型不是 object，请检查'
+        errorMsg: 'EasyAxios 类的第一个参数 options 的数据类型不是 object，请检查'
     }
     
     return checkSome(options, claim)
