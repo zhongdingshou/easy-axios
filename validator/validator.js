@@ -1,4 +1,5 @@
-import {toRawType} from '../utils/utils.js'
+import { toRawType } from '../utils/utils.js'
+
 export const validator =  (options, claim) => {
     if(toRawType(options) !== 'object') return {
         illegal: true,

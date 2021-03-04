@@ -47,7 +47,7 @@ export default class EasyAxios {
         this.cacheEffectiveTime = toRawType.isNumber(options.easyAxiosConfig.cacheEffectiveTime) && options.easyAxiosConfig.cacheEffectiveTime > 1000 * 60 * 5 ? options.easyAxiosConfig.cacheEffectiveTime : 0
         
         // 最大重连次数
-        this.maxReconnectionTimes = toRawType.isNumber(options.easyAxiosConfig.maxReconnectionTimes) ? options.easyAxiosConfig.maxReconnectionTimes : 0
+        this.maxReconnectionTimes = toRawType.isNumber(options.easyAxiosConfig.maxReconnectionTimes) ? parseInt(options.easyAxiosConfig.maxReconnectionTimes) : 0
         
         // 状态码及操作函数的对象
         this.statusHandlers = toRawType.isObject(options.easyAxiosConfig.statusHandlers) ? options.easyAxiosConfig.statusHandlers : {}
