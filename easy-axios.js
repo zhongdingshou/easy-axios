@@ -109,12 +109,6 @@ export default class EasyAxios {
                     }
                 }
 
-                // 移除 PendingRequest
-                this.removePendingRequest(config)
-
-                // 添加最新的 PendingRequest
-                this.addPendingRequest(config)
-
                 // 是否调用 beforeRequestHook
                 if (!(disableHooks === true || (disableHooks && disableHooks.request))) {
                     try {
@@ -125,6 +119,12 @@ export default class EasyAxios {
                         (this.isOpenTips && !disableTips) && this.tipsFunction(`beforeRequestHook 内部出现错误：${error.message}，请检查`)
                     }
                 }
+
+                // 移除 PendingRequest
+                this.removePendingRequest(config)
+
+                // 添加最新的 PendingRequest
+                this.addPendingRequest(config)
 
                 return config
             },
