@@ -10,7 +10,7 @@
 - 可自定义状态码以及对应的方法
 - 提供请求前和响应后的处理方法 `beforeRequestHook, afterResponseHook`，其中 `afterResponseHook` 的第二个参数是区分响应成功和失败的
 - `getStatusFormResult, getMassageFormResult, getDataFormResult` 获取 `response.data` 内的状态码、信息以及数据的，需要开发人员进行修改，默认：状态码：status，信息：msg，数据：data
-- loading相关的操作 `stratLoading, endLoading` ，其中 `endLoading` 操作是在请求数为 0 时才会调用
+- loading相关的操作 `startLoading, endLoading` ，其中 `endLoading` 操作是在请求数为 0 时才会调用
 - `validateStatus` 用于校验接口状态是否成功的，可根据相关状态码进行自定义判断规则
 
 ## 目录
@@ -108,7 +108,7 @@ tipsFunction: (message) => {
 },
 
 // 添加加载动画
-stratLoading: () => {
+startLoading: () => {
     console.log('loading...')
 },
 

@@ -57,7 +57,7 @@ export default class EasyAxios {
         this.tipsFunction = toRawType.isFunction(options.tipsFunction) ? options.tipsFunction : () => {}
         
         // loading 相关
-        this.stratLoading = toRawType.isFunction(options.stratLoading) ? options.stratLoading : () => {}
+        this.startLoading = toRawType.isFunction(options.startLoading) ? options.startLoading : () => {}
         this.endLoading   = toRawType.isFunction(options.endLoading)   ? options.endLoading   : () => {}
 
         // 获取 response.data 对象里的相关属性（数据、信息码、信息）
@@ -92,7 +92,7 @@ export default class EasyAxios {
                 this.requestCount++
 
                 // 调用加载动画方法
-                this.stratLoading()
+                this.startLoading()
 
                 // 赋值某一接口是否禁用 hook、tips、cache 的配置
                 const { easyAxiosConfig: { disableHooks, disableTips, disableCache } = {} } = config

@@ -48,7 +48,7 @@ export const claim = {
     description: '提示信息的处理',
     type: 'function',
   },
-  stratLoading: {
+  startLoading: {
     description: '添加加载动画',
     type: 'function',
   },

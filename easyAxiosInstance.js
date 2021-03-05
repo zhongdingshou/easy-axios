@@ -59,7 +59,7 @@ export default new EasyAxios({
     },
     
     // 添加加载动画
-    stratLoading: () => {
+    startLoading: () => {
         console.log('loading...')
     },
 
